@@ -1,0 +1,240 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManagement:
+	transition: FadeTransition()
+	MainScreen:
+	AnotherScreen:
+	ThirdScreen:
+	FinalScreen:
+	AllotmentScreen:
+	allotedresult:
+
+<Button>:
+    font_size: 20
+    size: 170,75
+    color: 0,1,0,1
+    size_hint: 0.3, 0.2
+
+
+<MainScreen>:
+	name: "main"
+	FloatLayout:
+        Button:
+            text: "Hostel Detail"
+            pos_hint: {"x": 0.35, "y": 0.56}
+            on_press: app.root.current = "other"
+        Button:
+            text: "Hostel Allotment"
+            pos_hint: {"x": 0.35, "y": 0.34}
+            on_press: root.to_allotment()
+
+<AllotmentScreen>:
+    name: "allotment"
+    FloatLayout:
+        GridLayout:
+            cols:2
+            Label:
+                text: "A Block available seat"
+            TextInput:
+                id: a
+                multiline: "false"
+            Label:
+                text: "B Block available seat"
+            TextInput:
+                id: b
+                multiline: "false"
+            Label:
+                text: "C Block available seat"
+            TextInput:
+                id: c
+                multiline: "false"
+            Label:
+                text: "D Block available seat"
+            TextInput:
+                id: d
+                multiline: "false"
+            Label:
+                text: "E Block available seat"
+            TextInput:
+                id: e
+                multiline: "false"
+            FileChooserIconView:
+                id: filechooser
+            Button:
+                text: "Allot the seat"
+                on_press: root.allot(a.text,b.text,c.text,d.text,e.text)
+        Button:
+            text: "BACK"
+            size_hint: 0.1, 0.1
+            color: 0,1,1,1
+            pos_hint: {"x": 0.9, "y": 0.9}
+            on_press: root.getback()
+
+<allotedresult>:
+    name: "allotedresult"
+    FloatLayout:
+        BoxLayout:
+            orientation: "vertical"
+            BoxLayout:
+                orientation: "horizontal"
+                bcolor: 0,1,0,1
+                size_hint: None, None
+
+                Label:
+                    pos_hint: {"x": 0.1, "y": 0.1}
+                    text: "A block result"
+                    size: 150,50
+                    size_hint: None, None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "B block result"
+                    size: 150,50
+                    size_hint:  None,None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "C block result"
+                    size: 150,50
+                    size_hint:  None,None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "D block result"
+                    size: 150,50
+                    size_hint:  None,None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "E block result"
+                    size: 150,50
+                    size_hint:  None,None
+            ScrollView:
+                size: self.size
+                GridLayout:
+                    id: gd
+                    cols: 5
+                    size_hint_y: None
+                    spacing: 0,0
+                    padding: 1,0
+
+        Button:
+            text: "BACK"
+            size_hint: 0.1, 0.1
+            color: 0,1,1,1
+            pos_hint: {"x": 0.9, "y": 0.9}
+            on_press: root.getback()
+
+
+<AnotherScreen>:
+    name: "other"
+	FloatLayout:
+
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "A block"
+                size_hint: 1, 0.2
+                on_press: root.getblockname("A")
+            Button:
+                text: "B block"
+                size_hint: 1, 0.2
+                on_press: root.getblockname("B")
+
+            Button:
+                text: "C block"
+                size_hint: 1, 0.2
+                on_press: root.getblockname("C")
+            Button:
+                text: "D block"
+                size_hint: 1, 0.2
+                on_press: root.getblockname("D")
+            Button:
+                text: "E block"
+                size_hint: 1, 0.2
+                on_press: root.getblockname("E")
+        Button:
+            text: "BACK"
+            size_hint: 0.1, 0.1
+            color: 0,1,1,1
+            pos_hint: {"x": 0.9, "y": 0.9}
+            on_press: root.getback()
+
+<ThirdScreen>:
+
+	name: "third"
+	FloatLayout:
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Ground floor"
+                size_hint: 1, 0.2
+                on_press: root.up("1")
+            Button:
+                text: "I floor"
+                size_hint: 1, 0.2
+                on_press: root.up("2")
+
+            Button:
+                text: "II floor"
+                size_hint: 1, 0.2
+                on_press: root.up("3")
+            Button:
+                text: "III floor"
+                size_hint: 1, 0.2
+                on_press: root.up("4")
+        Button:
+            text: "BACK"
+            size_hint: 0.1, 0.1
+            color: 0,1,1,1
+            pos_hint: {"x": 0.9, "y": 0.9}
+            on_press: root.getback()
+
+
+
+<FinalScreen>:
+    name: "final"
+    FloatLayout:
+        BoxLayout:
+            orientation: "vertical"
+            BoxLayout:
+                orientation: "horizontal"
+                bcolor: 0,1,0,1
+                size_hint: None, None
+
+                Label:
+                    pos_hint: {"x": 0.1, "y": 0.1}
+                    text: "Sr.no."
+                    size: 100,50
+                    size_hint: None, None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "Name"
+                    size: 250,50
+                    size_hint:  None,None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "block"
+                    size: 150,50
+                    size_hint:  None,None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "Room no"
+                    size: 150,50
+                    size_hint:  None,None
+                Label:
+                    pos_hint: {"x": 0.6, "y": 0.1}
+                    text: "Year"
+                    size: 150,50
+                    size_hint:  None,None
+            ScrollView:
+                size: self.size
+                GridLayout:
+                    id: gd
+                    cols: 5
+                    size_hint_y: None
+                    spacing: 0,0
+                    padding: 1,0
+        Button:
+            text: "BACK"
+            size_hint: 0.1, 0.1
+            color: 0,1,1,1
+            pos_hint: {"x": 0.9, "y": 0.9}
+            on_press: root.getback()
+
